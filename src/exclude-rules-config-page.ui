@@ -48,7 +48,7 @@
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset theme="go-top" resource="icons.qrc">
              <normaloff>:/icons/go-top.png</normaloff>:/icons/go-top.png</iconset>
            </property>
           </widget>
@@ -62,7 +62,7 @@
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset theme="go-up" resource="icons.qrc">
              <normaloff>:/icons/go-up.png</normaloff>:/icons/go-up.png</iconset>
            </property>
           </widget>
@@ -90,7 +90,7 @@ You can create as many as you like.</string>
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset theme="add" resource="icons.qrc">
              <normaloff>:/icons/add.png</normaloff>:/icons/add.png</iconset>
            </property>
           </widget>
@@ -104,7 +104,7 @@ You can create as many as you like.</string>
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset theme="remove" resource="icons.qrc">
              <normaloff>:/icons/remove.png</normaloff>:/icons/remove.png</iconset>
            </property>
           </widget>
@@ -131,7 +131,7 @@ You can create as many as you like.</string>
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset theme="go-down" resource="icons.qrc">
              <normaloff>:/icons/go-down.png</normaloff>:/icons/go-down.png</iconset>
            </property>
           </widget>
@@ -145,7 +145,7 @@ You can create as many as you like.</string>
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset theme="go-bottom" resource="icons.qrc">
              <normaloff>:/icons/go-bottom.png</normaloff>:/icons/go-bottom.png</iconset>
            </property>
           </widget>

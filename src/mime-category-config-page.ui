@@ -87,7 +87,7 @@
              <string>...</string>
             </property>
             <property name="icon">
-             <iconset resource="icons.qrc">
+             <iconset theme="add" resource="icons.qrc">
               <normaloff>:/icons/add.png</normaloff>:/icons/add.png</iconset>
             </property>
            </widget>
@@ -101,7 +101,7 @@
              <string>...</string>
             </property>
             <property name="icon">
-             <iconset resource="icons.qrc">
+             <iconset theme="remove" resource="icons.qrc">
               <normaloff>:/icons/remove.png</normaloff>:/icons/remove.png</iconset>
             </property>
            </widget>
@@ -255,7 +255,7 @@ Use * or ? as wildcards.</string>
  <customwidgets>
   <customwidget>
    <class>QDirStat::TreemapView</class>
-   <extends>QFrame</extends>
+   <extends>QGraphicsView</extends>
    <header>TreemapView.h</header>
    <container>1</container>
   </customwidget>

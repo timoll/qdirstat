@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>654</width>
-    <height>569</height>
+    <height>571</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -48,7 +48,7 @@
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset theme="go-top" resource="icons.qrc">
              <normaloff>:/icons/go-top.png</normaloff>:/icons/go-top.png</iconset>
            </property>
           </widget>
@@ -62,7 +62,7 @@
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset theme="go-up" resource="icons.qrc">
              <normaloff>:/icons/go-up.png</normaloff>:/icons/go-up.png</iconset>
            </property>
           </widget>
@@ -90,7 +90,7 @@ You can create as many as you like.</string>
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset theme="add" resource="icons.qrc">
              <normaloff>:/icons/add.png</normaloff>:/icons/add.png</iconset>
            </property>
           </widget>
@@ -104,7 +104,7 @@ You can create as many as you like.</string>
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset theme="remove" resource="icons.qrc">
              <normaloff>:/icons/remove.png</normaloff>:/icons/remove.png</iconset>
            </property>
           </widget>
@@ -131,7 +131,7 @@ You can create as many as you like.</string>
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset theme="go-down" resource="icons.qrc">
              <normaloff>:/icons/go-down.png</normaloff>:/icons/go-down.png</iconset>
            </property>
           </widget>
@@ -145,7 +145,7 @@ You can create as many as you like.</string>
             <string>...</string>
            </property>
            <property name="icon">
-            <iconset resource="icons.qrc">
+            <iconset theme="go-bottom" resource="icons.qrc">
              <normaloff>:/icons/go-bottom.png</normaloff>:/icons/go-bottom.png</iconset>
            </property>
           </widget>
@@ -408,7 +408,7 @@ re-read from disk after the cleanup action is finished.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>330</width>
+            <width>313</width>
             <height>147</height>
            </rect>
           </property>
@@ -471,8 +471,8 @@ Note that they don't really have a counterpart on the disk.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>330</width>
-            <height>152</height>
+            <width>313</width>
+            <height>155</height>
            </rect>
           </property>
           <attribute name="label">
@@ -622,8 +622,8 @@ command, uncheck this.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>330</width>
-            <height>142</height>
+            <width>313</width>
+            <height>127</height>
            </rect>
           </property>
           <attribute name="label">
