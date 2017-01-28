@@ -397,7 +397,7 @@ void CleanupCollection::addToMenu( QMenu * menu, bool keepUpdated )
 
     foreach ( Cleanup * cleanup, _cleanupList )
     {
-	if ( cleanup->active() )
+    if ( cleanup->active() )
 	    menu->addAction( cleanup );
     }
 
@@ -474,7 +474,7 @@ void CleanupCollection::readSettings()
 
 	    QString command  = settings.value( "Command" ).toString();
 	    QString title    = settings.value( "Title"	 ).toString();
-	    QString iconName = settings.value( "Icon"	 ).toString();
+        QIcon icon   = settings.value( "Icon").value<QIcon>();
 	    QString hotkey   = settings.value( "Hotkey"	 ).toString();
 	    QString shell    = settings.value( "Shell"	 ).toString();
 
@@ -513,8 +513,8 @@ void CleanupCollection::readSettings()
 		cleanup->setRefreshPolicy     ( static_cast<Cleanup::RefreshPolicy>( refreshPolicy ) );
 		cleanup->setOutputWindowPolicy( static_cast<Cleanup::OutputWindowPolicy>( outputWindowPolicy ) );
 
-		if ( ! iconName.isEmpty() )
-		    cleanup->setIcon( iconName );
+        if ( ! icon.isNull() )
+            cleanup->setIcon( icon );
 
 		if ( ! hotkey.isEmpty() )
 		    cleanup->setShortcut( hotkey );
@@ -585,8 +585,8 @@ void CleanupCollection::writeSettings()
 	if ( ! cleanup->shell().isEmpty() )
 	     settings.setValue( "Shell", cleanup->shell() );
 
-	if ( ! cleanup->iconName().isEmpty() )
-	    settings.setValue( "Icon", cleanup->iconName() );
+    if ( ! cleanup->icon().isNull() )
+        settings.setValue( "Icon", QVariant::fromValue(cleanup->icon() ) );
 
 	if ( ! cleanup->shortcut().isEmpty() )
 	    settings.setValue( "Hotkey" , cleanup->shortcut().toString() );

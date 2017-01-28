@@ -15,6 +15,7 @@
 #include <QSet>
 #include <QTimer>
 #include <QTextStream>
+#include <QIcon>
 
 #include "DataColumns.h"
 #include "FileInfo.h"
@@ -415,17 +416,17 @@ namespace QDirStat
 
 	// The various icons
 
-	QPixmap	_dirIcon;
-	QPixmap	_dotEntryIcon;
-	QPixmap	_fileIcon;
-	QPixmap _symlinkIcon;
-	QPixmap	_unreadableDirIcon;
-	QPixmap _mountPointIcon;
-	QPixmap _stopIcon;
-	QPixmap _excludedIcon;
-	QPixmap _blockDeviceIcon;
-	QPixmap _charDeviceIcon;
-	QPixmap _specialIcon;
+    QIcon _dirIcon;
+    QIcon _dotEntryIcon;
+    QIcon _fileIcon;
+    QIcon _symlinkIcon;
+    QIcon _unreadableDirIcon;
+    QIcon _mountPointIcon;
+    QIcon _stopIcon;
+    QIcon _excludedIcon;
+    QIcon _blockDeviceIcon;
+    QIcon _charDeviceIcon;
+    QIcon _specialIcon;
 
     };	// class DirTreeModel
 

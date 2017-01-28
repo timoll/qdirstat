@@ -80,9 +80,9 @@ namespace QDirStat
 	QString cleanTitle() const;
 
 	/**
-	 * Return the icon name of this cleanup action.
+     * Return the icon of this cleanup action.
 	 **/
-	QString iconName() const { return _iconName; }
+    QIcon iconName() const { return _icon; }
 
 	/**
 	 * Return whether or not this cleanup action is generally active.
@@ -299,7 +299,7 @@ namespace QDirStat
 
 	void setTitle		     ( const QString & title  );
 	void setCommand		     ( const QString & command)	   { _command		    = command;	 }
-	void setIcon		     ( const QString & iconName );
+    void setIcon		     (const QIcon &icon );
 	void setActive		     ( bool active   )		   { _active		    = active;	 }
 	void setWorksForDir	     ( bool canDo    )		   { _worksForDir	    = canDo;	 }
 	void setWorksForFile	     ( bool canDo    )		   { _worksForFile	    = canDo;	 }
@@ -416,7 +416,7 @@ namespace QDirStat
 
 	QString		   _command;
 	QString		   _title;
-	QString		   _iconName;
+    QIcon		   _icon;
 	bool		   _active;
 	bool		   _worksForDir;
 	bool		   _worksForFile;

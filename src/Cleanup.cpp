@@ -57,10 +57,10 @@ void Cleanup::setTitle( const QString &title )
 }
 
 
-void Cleanup::setIcon( const QString & iconName )
+void Cleanup::setIcon( const QIcon & icon )
 {
-    _iconName = iconName;
-    QAction::setIcon( QPixmap( _iconName ) );
+    _icon = icon;
+    QAction::setIcon( icon );
 }
 
 

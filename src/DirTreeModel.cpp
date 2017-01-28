@@ -18,6 +18,10 @@
 #include "Exception.h"
 #include "DebugHelpers.h"
 
+#include <QIcon>
+#include <QMimeDatabase>
+#include <QUrl>
+
 
 using namespace QDirStat;
 
@@ -160,17 +164,17 @@ void DirTreeModel::loadIcons()
     if ( ! _treeIconDir.endsWith( "/" ) )
 	_treeIconDir += "/";
 
-    _dirIcon	       = QPixmap( _treeIconDir + "dir.png"	      );
-    _dotEntryIcon      = QPixmap( _treeIconDir + "dot-entry.png"      );
-    _fileIcon	       = QPixmap( _treeIconDir + "file.png"	      );
-    _symlinkIcon       = QPixmap( _treeIconDir + "symlink.png"	      );
-    _unreadableDirIcon = QPixmap( _treeIconDir + "unreadable-dir.png" );
-    _mountPointIcon    = QPixmap( _treeIconDir + "mount-point.png"    );
-    _stopIcon	       = QPixmap( _treeIconDir + "stop.png"	      );
-    _excludedIcon      = QPixmap( _treeIconDir + "excluded.png"	      );
-    _blockDeviceIcon   = QPixmap( _treeIconDir + "block-device.png"   );
-    _charDeviceIcon    = QPixmap( _treeIconDir + "char-device.png"   );
-    _specialIcon       = QPixmap( _treeIconDir + "special.png"	 );
+    _dirIcon           = QIcon::fromTheme("folder",            QPixmap( _treeIconDir + "dir.png"            ) );
+    _dotEntryIcon      = QIcon::fromTheme("folder-documents",  QPixmap( _treeIconDir + "dot-entry.png"      ) );
+    _fileIcon          = QIcon::fromTheme("file",              QPixmap( _treeIconDir + "file.png"           ) );
+    _symlinkIcon       = QIcon::fromTheme("x-office-document", QPixmap( _treeIconDir + "symlink.png"        ) );
+    _unreadableDirIcon = QIcon::fromTheme("lock",              QPixmap( _treeIconDir + "unreadable-dir.png" ) );
+    _mountPointIcon    = QIcon::fromTheme("harddrive",         QPixmap( _treeIconDir + "mount-point.png"    ) );
+    _stopIcon          = QIcon::fromTheme("stop",              QPixmap( _treeIconDir + "stop.png"           ) );
+    _excludedIcon      = QPixmap( _treeIconDir + "excluded.png"    );
+    _blockDeviceIcon   = QIcon::fromTheme("harddrive",         QPixmap( _treeIconDir + "block-device.png"   ) );
+    _charDeviceIcon    = QPixmap( _treeIconDir + "char-device.png" );
+    _specialIcon       = QPixmap( _treeIconDir + "special.png"     );
 }
 
 
@@ -696,28 +700,41 @@ QVariant DirTreeModel::ownSizeColText( FileInfo * item ) const
 
 QVariant DirTreeModel::columnIcon( FileInfo * item, int col ) const
 {
-    if ( col != NameCol )
-	return QVariant();
 
-    QPixmap icon;
+
+    auto mimeIcon = [this](QString const& url, QIcon const& fallback)
+    {
+        QMimeDatabase db;
+        auto const mime = db.mimeTypeForFile( url );
+        QString const name = mime.iconName();
+        QString const genericName = mime.genericIconName();
+
+        if( QIcon::hasThemeIcon( name ) ) return QIcon::fromTheme( name );
+        else if( QIcon::hasThemeIcon( genericName ) )  return QIcon::fromTheme( genericName );
+        else return fallback;
+    };
+
+    if ( col != NameCol )
+    return QVariant();
+    QIcon icon;
 
     if	    ( item->isDotEntry() )  icon = _dotEntryIcon;
     else if ( item->isExcluded() )  icon = _excludedIcon;
     else if ( item->isDir()	 )
     {
 	if	( item->readState() == DirAborted )   icon = _stopIcon;
-	else if ( item->readState() == DirError	  )   icon = _unreadableDirIcon;
-	else if ( item->isMountPoint()		  )   icon = _mountPointIcon;
+    else if ( item->readState() == DirError	  )   icon = _unreadableDirIcon;
+    else if ( item->isMountPoint()		  )   icon = _mountPointIcon;
 	else					      icon = _dirIcon;
     }
     else // ! item->isDir()
     {
 	if	( item->readState() == DirError	  )   icon = _unreadableDirIcon;
-	else if	( item->isFile()		  )   icon = _fileIcon;
-	else if ( item->isSymLink()		  )   icon = _symlinkIcon;
-	else if ( item->isBlockDevice()		  )   icon = _blockDeviceIcon;
-	else if ( item->isCharDevice()		  )   icon = _charDeviceIcon;
-	else if ( item->isSpecial()		  )   icon = _specialIcon;
+    else if	( item->isFile()		  )   icon = mimeIcon( item->url(), _fileIcon) ;
+    else if ( item->isSymLink()		  )   icon = _symlinkIcon;
+    else if ( item->isBlockDevice()		  )   icon = mimeIcon( item->url(),_blockDeviceIcon );
+    else if ( item->isCharDevice()		  )   icon = _charDeviceIcon;
+    else if ( item->isSpecial()		  )   icon = _specialIcon;
     }
 
     return icon.isNull() ? QVariant() : icon;
